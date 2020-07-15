@@ -1,4 +1,4 @@
-name: CI Workflow
+name: CI
 
 on:
   push:
@@ -53,5 +53,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v1
         with:
-          name: build-output
-          path: app/build/outputs/apk/debug/app-debug.apk  
+          name: release
+          path: app/build/outputs/apk/release/app-release.apk
