@@ -1,9 +1,11 @@
 package cu.lexz451.rentmanager.utils
 
 import android.content.Context
+import android.text.format.DateFormat
 import cu.lexz451.rentmanager.ManagerApp
 import org.dizitart.no2.NitriteId
 import org.dizitart.no2.mapper.Mappable
+import java.util.*
 
 fun Context.app() = ManagerApp.instance
 

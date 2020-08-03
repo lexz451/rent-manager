@@ -1,0 +1,45 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory>
+        <Preference
+            app:key="shifts"
+            android:icon="@drawable/ic_person_black_24dp"
+            app:title="@string/shifts"
+            app:summary="@string/shifts_summary"/>
+
+        <Preference
+            app:key="rooms"
+            android:icon="@drawable/ic_hotel_black_24dp"
+            app:title="@string/rooms"
+            app:summary="@string/rooms_summary"/>
+
+        <Preference
+            app:key="products"
+            android:icon="@drawable/ic_storage_black_24dp"
+            app:title="@string/products"
+            app:summary="@string/products_summary"/>
+
+        <Preference
+            app:key="base_prices"
+            android:selectable="true"
+            app:title="Precios por Habitación"
+            app:icon="@drawable/ic_attach_money_black_24dp"
+            app:summary="Precios fijos por habitación"/>
+
+        <EditTextPreference
+            android:key="extra_room_price"
+            android:selectable="true"
+            app:title="Precio Extra por Hora"
+            app:summary="El precio por hora extra por hora de habitación"
+            app:icon="@drawable/ic_attach_money_black_24dp"/>
+
+        <Preference
+            app:key="blacklist"
+            android:selectable="true"
+            app:title="Lista Negra"
+            app:summary="Usuarios que estan en Lista Negra"
+            app:icon="@drawable/ic_person_black_24dp"/>
+
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,14 +1,20 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
 
+    dataBinding {
+        enabled = true
+    }
+
     defaultConfig {
         applicationId "cu.lexz451.rentmanager"
-        minSdkVersion 28
+        minSdkVersion 27
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -62,10 +68,17 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
 
     // -- Memory leaks detection -- //
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
 
     // -- NoSQL Database -- //
     implementation "org.dizitart:potassium-nitrite:3.4.2"
+
+    // -- Form validation -- //
+    implementation 'com.github.dhaval2404:android-form-validation:1.0'
+
+    // -- CSV -- //
+    implementation 'com.github.hsmnzaydn:easy-csv:1.0.0'
 
     // -- Tests -- //
     testImplementation 'junit:junit:4.12'

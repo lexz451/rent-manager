@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rooms"
+    app:startDestination="@id/roomListFragment">
+
+    <fragment
+        android:id="@+id/roomListFragment"
+        android:name="cu.lexz451.rentmanager.ui.rooms.RoomListFragment"
+        android:label="@string/rooms"
+        tools:layout="@layout/fragment_room_list" >
+        <action
+            android:id="@+id/action_roomListFragment_to_vipFragment"
+            app:destination="@id/vipFragment" />
+        <action
+            android:id="@+id/action_roomListFragment_to_roomDetailFragment"
+            app:destination="@id/roomDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vipFragment"
+        android:name="cu.lexz451.rentmanager.ui.rooms.vip.VipFragment"
+        android:label="@string/vip" />
+    <fragment
+        android:id="@+id/roomDetailFragment"
+        android:name="cu.lexz451.rentmanager.ui.rooms.RoomDetailFragment"
+        android:label="@string/room"
+        tools:layout="@layout/fragment_room_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_roomDetailFragment_to_roomLogsFragment"
+            app:destination="@id/roomLogsFragment" />
+        <action
+            android:id="@+id/action_roomDetailFragment_to_roomInventoryFragment"
+            app:destination="@id/roomInventoryFragment" />
+        <action
+            android:id="@+id/action_roomDetailFragment_to_roomAddClientFragment"
+            app:destination="@id/roomAddClientFragment" />
+        <action
+            android:id="@+id/action_roomDetailFragment_to_roomPaymentFragment"
+            app:destination="@id/roomPaymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/roomLogsFragment"
+        android:name="cu.lexz451.rentmanager.ui.rooms.logs.RoomLogsFragment"
+        android:label="@string/logs" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/roomInventoryFragment"
+        android:name="cu.lexz451.rentmanager.ui.rooms.inventory.RoomInventoryFragment"
+        android:label="@string/inventory" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/roomAddClientFragment"
+        android:name="cu.lexz451.rentmanager.ui.rooms.client.RoomAddClientFragment"
+        android:label="@string/add_client" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/roomPaymentFragment"
+        android:name="cu.lexz451.rentmanager.ui.rooms.payment.RoomPaymentFragment"
+        android:label="@string/room_payment" >
+        <argument
+            android:name="client"
+            app:argType="cu.lexz451.rentmanager.data.model.Client" />
+    </fragment>
+</navigation>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/listPreferredItemHeightSmall"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/productName"
+            android:layout_weight="1"
+            tools:text="Producto"
+            android:layout_gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:gravity="center_vertical"
+            android:drawableTint="@color/colorPrimary"
+            android:id="@+id/productQuantity"
+            android:drawableStart="@drawable/ic_storage_black_24dp"
+            android:drawablePadding="4dp"
+            android:layout_gravity="center_vertical"
+            tools:text="2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:tint="@color/colorPrimary"
+            android:background="@null"
+            android:id="@+id/btnRemove"
+            android:src="@drawable/ic_delete_black_24dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</layout>
