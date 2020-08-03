@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/settings"
+    app:startDestination="@id/settingsFragment">
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="cu.lexz451.rentmanager.ui.settings.SettingsFragment"
+        android:label="@string/settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_shiftListFragment"
+            app:destination="@id/shiftListFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_configRoomList"
+            app:destination="@id/configRoomList" />
+        <action
+            android:id="@+id/action_settingsFragment_to_productListFragment"
+            app:destination="@id/productListFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_priceListFragment"
+            app:destination="@id/priceListFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_blackListFragment"
+            app:destination="@id/blackListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shiftListFragment"
+        android:name="cu.lexz451.rentmanager.ui.settings.shifts.ShiftListFragment"
+        android:label="@string/shifts"
+        tools:layout="@layout/fragment_config_shift_list" >
+        <action
+            android:id="@+id/action_shiftListFragment_to_shiftDetailFragment"
+            app:destination="@id/shiftDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shiftDetailFragment"
+        android:name="cu.lexz451.rentmanager.ui.settings.shifts.ShiftDetailFragment"
+        android:label="@string/shift_detail"
+        tools:layout="@layout/fragment_config_shift_detail" >
+        <argument
+            android:name="id"
+            app:argType="long"
+            android:defaultValue="0L" />
+    </fragment>
+    <fragment
+        android:id="@+id/configRoomList"
+        android:name="cu.lexz451.rentmanager.ui.settings.rooms.RoomListFragment"
+        android:label="@string/manage_rooms" />
+    <fragment
+        android:id="@+id/productListFragment"
+        android:name="cu.lexz451.rentmanager.ui.settings.products.ProductListFragment"
+        android:label="@string/general_inventory" >
+        <action
+            android:id="@+id/action_productListFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="cu.lexz451.rentmanager.ui.settings.products.ProductDetailFragment"
+        android:label="@string/product_detail" >
+        <argument
+            android:name="id"
+            app:argType="long"
+            android:defaultValue="0L" />
+    </fragment>
+    <fragment
+        android:id="@+id/priceListFragment"
+        android:name="cu.lexz451.rentmanager.ui.settings.prices.PriceListFragment"
+        android:label="@string/prices" />
+    <fragment
+        android:id="@+id/blackListFragment"
+        android:name="cu.lexz451.rentmanager.ui.settings.blacklist.BlackListFragment"
+        android:label="@string/blacklist" />
+</navigation>

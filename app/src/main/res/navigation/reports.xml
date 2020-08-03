@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reports"
+    app:startDestination="@id/reportListFragment">
+
+    <fragment
+        android:id="@+id/reportListFragment"
+        android:name="cu.lexz451.rentmanager.ui.reports.ReportListFragment"
+        android:label="@string/reports"
+        tools:layout="@layout/fragment_report_list" >
+        <action
+            android:id="@+id/action_reportListFragment_to_reportDetailFragment"
+            app:destination="@id/reportDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reportDetailFragment"
+        android:name="cu.lexz451.rentmanager.ui.reports.ReportDetailFragment"
+        android:label="@string/report" >
+        <argument
+            android:name="report"
+            app:argType="cu.lexz451.rentmanager.data.model.Report" />
+    </fragment>
+</navigation>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="room"
+            type="cu.lexz451.rentmanager.data.model.Room" />
+        <variable
+            name="onItemSelected"
+            type="android.view.View.OnClickListener" />
+    </data>
+    <com.google.android.material.card.MaterialCardView
+        android:onClick="@{onItemSelected}"
+        android:layout_margin="4dp"
+        app:contentPadding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.google.android.material.textview.MaterialTextView
+                android:text="@{room.tag}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                tools:text="Habitación"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/colorSuccess"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                    isGone="@{room.client != null}"
+                    android:drawableTint="@color/colorSuccess"
+                    android:drawablePadding="4dp"
+                    android:text="@string/free"
+                    android:gravity="center_vertical"
+                    android:drawableStart="@drawable/ic_bookmark_black_24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    isGone="@{room.client == null}"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:text="@string/busy"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/colorDanger"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                        isGone="@{room.client == null}"
+                        android:drawableTint="@color/colorDanger"
+                        android:drawablePadding="4dp"
+                        android:gravity="center_vertical"
+                        android:drawableStart="@drawable/ic_lock_black_24dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+
+                    <Space
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_gravity="center_vertical"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                        android:textColor="@color/colorDanger"
+                        android:gravity="center_vertical"
+                        android:id="@+id/exitTime"
+                        tools:text="10:50 PM"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

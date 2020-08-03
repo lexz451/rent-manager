@@ -1,3 +1,88 @@
 <resources>
-    <string name="app_name">Rent Manager</string>
+    <string name="app_name">Renta Clara</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="settings">Configuración</string>
+    <string name="reports">Reportes</string>
+    <string name="rooms">Habitaciones</string>
+    <string name="new_shift">Nuevo Turno</string>
+    <string name="employeeName">Nombre del Trabajador</string>
+    <string name="save">Guardar</string>
+    <string name="remove">Eliminar</string>
+    <string name="no_empty_field">Valor requerido</string>
+    <string name="shifts">Turnos</string>
+    <string name="shifts_summary">Definir turnos de trabajo</string>
+    <string name="rooms_summary">Administrar Habitaciones</string>
+    <string name="general_configuration">Configuración General</string>
+    <string name="current_shift">Turno Actual</string>
+    <string name="vip">Reservado</string>
+    <string name="free">Libre</string>
+    <string name="busy">Ocupado</string>
+    <string name="new_room">Crear Habitación</string>
+    <string name="manage_rooms">Administrar Habitaciones</string>
+    <string name="new_product">Crear Producto</string>
+    <string name="productName">Nombre del Producto</string>
+    <string name="quantity">Cantidad</string>
+    <string name="price">Precio</string>
+    <string name="products">Inventario</string>
+    <string name="products_summary">Invantario General de Productos</string>
+    <string name="add">Añadir</string>
+    <string name="warning">Advertencia</string>
+    <string name="no_shift_defined">Para poder acceder a esta pantalla primero debe definir al menos un turno de trabajo</string>
+    <string name="accept">Aceptar</string>
+    <string name="add_client">Añadir Cliente</string>
+    <string name="client">Cliente</string>
+    <string name="check_in_hour">Hora de entrada</string>
+    <string name="time_passed">Tiempo transcurrido</string>
+    <string name="expenses">Consumo</string>
+    <string name="add_product">Añadir Producto</string>
+    <string name="check_out_room">Cobrar Habitación</string>
+    <string name="inventory">Inventario</string>
+    <string name="logs">Historial</string>
+    <string name="product_already_added">El producto ya fue añadido</string>
+    <string name="companion">Acompañante</string>
+    <string name="ci">C.I.</string>
+    <string name="name">Nombre</string>
+    <string name="invalid_ci">Número de C.I no válido</string>
+    <string name="close_account">Cerrar Cuenta</string>
+    <string name="close_and_blacklist">Cerrar y Agregar a Lista Negra</string>
+    <string name="extra_hours">Horas Extras</string>
+    <string name="cancel">Cancelar</string>
+    <string name="new_price">Añadir Precio</string>
+    <string name="room_price">Precio de Habitación</string>
+    <string name="paid">Pagado</string>
+    <string name="no_price_defined">Para acceder a esta pantalla primero debe definir al menos un precio base de Habitación</string>
+    <string name="confirm_close_account">Esta seguro que desea cerrar la cuenta?</string>
+    <string name="reason">Motivo</string>
+    <string name="slash">/</string>
+    <string name="export_data">Exportar datos</string>
+    <string name="action_notify_room">notify_room</string>
+    <string name="confirm_remove_blacklist">Esta seguro de querer eliminar este usuario de la lista negra?</string>
+    <string name="action_notify_room_done">notify_room_done</string>
+    <string name="report">Reporte</string>
+    <string name="room">Habitación</string>
+    <string name="room_payment">Cobrar Habitación</string>
+    <string name="shift_detail">Detalles del Turno</string>
+    <string name="general_inventory">Inventario General</string>
+    <string name="product_detail">Detalles del Producto</string>
+    <string name="prices">Precios</string>
+    <string name="blacklist">Lista Negra</string>
+    <string name="confirm_remove_db">Esta seguro de eliminar todos los datos de la aplicación</string>
+    <string name="confirm_delete_logs">Eliminar los elementos del historial?</string>
+    <string name="confirm_delete_report">Borrar reporte?</string>
 </resources>

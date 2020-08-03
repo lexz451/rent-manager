@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="shift"
+            type="cu.lexz451.rentmanager.data.model.Shift" />
+        <variable
+            name="onSave"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="onRemove"
+            type="android.view.View.OnClickListener" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:padding="16dp"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.settings.shifts.ShiftDetailFragment">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/employeeName"
+            app:startIconDrawable="@drawable/ic_person_black_24dp"
+            android:hint="@string/employeeName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:text="@={shift.employee}"
+                android:inputType="textPersonName|textCapWords"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"/>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.google.android.material.button.MaterialButton
+                android:onClick="@{onSave}"
+                android:id="@+id/btnSave"
+                app:icon="@drawable/ic_save_black_24dp"
+                android:text="@string/save"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Space
+                android:layout_width="16dp"
+                android:layout_height="wrap_content"/>
+            <com.google.android.material.button.MaterialButton
+                android:onClick="@{onRemove}"
+                android:visibility="gone"
+                android:backgroundTint="@color/colorDanger"
+                android:id="@+id/btnRemove"
+                app:icon="@drawable/ic_delete_black_24dp"
+                android:text="@string/remove"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

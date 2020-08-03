@@ -15,7 +15,7 @@ import java.io.Serializable
 )
 data class Product(
     @Id
-    var id: Long,
+    var __id: Long,
     var name: String,
     var quantity: Int,
     var price: Double
@@ -25,19 +25,19 @@ data class Product(
 
     override fun read(mapper: NitriteMapper?, document: Document?) {
         document?.run {
-            this@Product.id = get("__id") as Long
-            name = get("_name") as String
-            quantity = get("_quantity") as Int
-            price = get("_price") as Double
+            this@Product.__id = get("__id") as Long
+            name = get("name") as String
+            quantity = get("quantity") as Int
+            price = get("price") as Double
         }
     }
 
     override fun write(mapper: NitriteMapper?): Document {
         return Document().apply {
-            put("__id", generateId(this@Product.id))
-            put("_name", name)
-            put("_quantity", quantity)
-            put("_price", price)
+            put("__id", generateId(this@Product.__id))
+            put("name", name)
+            put("quantity", quantity)
+            put("price", price)
         }
     }
 
