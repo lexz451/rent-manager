@@ -69,13 +69,16 @@ dependencies {
 
     // -- Memory leaks detection -- //
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
+    // debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4' //
 
     // -- NoSQL Database -- //
     implementation "org.dizitart:potassium-nitrite:3.4.2"
 
     // -- Form validation -- //
     implementation 'com.github.dhaval2404:android-form-validation:1.0'
+
+    // -- Number picker -- //
+    implementation 'com.github.StephenVinouze:MaterialNumberPicker:1.0.5'
 
     // -- CSV -- //
     implementation 'com.github.hsmnzaydn:easy-csv:1.0.0'

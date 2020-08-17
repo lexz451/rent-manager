@@ -14,7 +14,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.github.dhaval2404.form_validation.rule.BaseRule
+import com.github.dhaval2404.form_validation.rule.EqualRule
 import com.github.dhaval2404.form_validation.rule.NonEmptyRule
+import com.github.dhaval2404.form_validation.rule.NumberRule
 import com.github.dhaval2404.form_validation.validation.FormValidator
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.dialog.MaterialDialogs
@@ -122,6 +125,7 @@ class RoomPaymentFragment : Fragment(), AdapterView.OnItemSelectedListener {
     }
 
     private fun isFormValid(): Boolean {
+        if (paid_input_input.error != null) return false
         return FormValidator.getInstance()
             .addField(extra_hours_input, NonEmptyRule(R.string.no_empty_field))
             .addField(paid_input_input, NonEmptyRule(R.string.no_empty_field))
@@ -136,6 +140,11 @@ class RoomPaymentFragment : Fragment(), AdapterView.OnItemSelectedListener {
         val price = priceSelector.selectedItem as Price
         val extra = if (extra_hours.text.isNullOrEmpty()) 0 else extra_hours.text.toString().toInt()
         val paid = if (paid_input.text.isNullOrEmpty()) .0 else paid_input.text.toString().toDouble()
+        if (paid < client.paymentDetails.total) {
+            paid_input_input.error = "Importe insuficiente"
+        } else {
+            paid_input_input.error = null
+        }
         calculatePayment(client, extra, price.price, paid)
     }
 

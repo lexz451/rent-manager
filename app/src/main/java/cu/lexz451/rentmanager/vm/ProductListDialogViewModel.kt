@@ -16,8 +16,11 @@ class ProductListDialogViewModel(
 ) : ViewModel() {
 
     private val _products = MutableLiveData<List<Product>>()
+    private val _storeProducts = MutableLiveData<List<Product>>()
 
     val products: LiveData<List<Product>> = _products
+
+    val storeProducts: LiveData<List<Product>> = _storeProducts
 
     init {
         load()
@@ -31,5 +34,9 @@ class ProductListDialogViewModel(
             val products = db.productStore.find().toList()
             _products.postValue(products)
         }
+
+        val data = db.productStore.find().toList()
+        _storeProducts.postValue(data)
+
     }
 }

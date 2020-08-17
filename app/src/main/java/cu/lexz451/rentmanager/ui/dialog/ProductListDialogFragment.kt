@@ -2,6 +2,7 @@ package cu.lexz451.rentmanager.ui.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -60,15 +61,29 @@ class ProductListDialogFragment : BottomSheetDialogFragment() {
     ) : RecyclerView.ViewHolder(view) {
         fun bind(product: Product) {
             view.name.text = product.name
+
             view.quantityPicker.run {
-                minValue = 1
-                maxValue = product.quantity
+                wrapSelectorWheel = true
+                if (product.quantity > 0) {
+                    minValue = 1
+                    maxValue = product.quantity
+                    isEnabled = true
+                } else {
+                    minValue = 0
+                    maxValue = 0
+                    isEnabled = false
+                }
             }
+
             view.btnAdd.setOnClickListener {
                 val copy = product.copy()
                 copy.quantity = view.quantityPicker.value
                 listener?.onItemSelected(copy)
                 dismiss()
+            }
+
+            if (product.quantity == 0) {
+                view.btnAdd.isEnabled = false
             }
         }
     }

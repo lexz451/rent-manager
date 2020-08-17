@@ -27,6 +27,10 @@ class ProductDetailViewModel(
     }
 
     fun remove() = viewModelScope.launch {
+        // Validate products in Rooms
+        db.roomStore.find().toList().forEach { r ->
+            r.products.removeIf { it.__id == _product.value!!.__id }
+        }
         db.productStore.remove(_product.value!!)
     }
 

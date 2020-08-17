@@ -120,9 +120,13 @@ class ReportListFragment : Fragment() {
 
             view.totalProducts.text = totalProducts.toString()
             view.totalClients.text = report.clients.size.toString()
-            view.totalPay.text = report.clients.sumByDouble { client ->
-                client.paymentDetails.total
-            }.toString()
+
+            var totalPay =
+                report.clients.sumByDouble { c -> c.paymentDetails.total }
+            val totalVip = vipRecord?.products?.sumByDouble { it.price * it.quantity }
+            totalPay += totalVip ?: .0
+
+            view.totalPay.text = totalPay.toString()
 
             view.btnRemove.setOnClickListener {
                 val dialog = MaterialAlertDialogBuilder(requireContext())
