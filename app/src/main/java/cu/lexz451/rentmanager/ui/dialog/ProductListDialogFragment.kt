@@ -68,10 +68,12 @@ class ProductListDialogFragment : BottomSheetDialogFragment() {
                     minValue = 1
                     maxValue = product.quantity
                     isEnabled = true
+                    view.btnAdd.isEnabled = true
                 } else {
                     minValue = 0
                     maxValue = 0
                     isEnabled = false
+                    view.btnAdd.isEnabled = false
                 }
             }
 
@@ -80,10 +82,6 @@ class ProductListDialogFragment : BottomSheetDialogFragment() {
                 copy.quantity = view.quantityPicker.value
                 listener?.onItemSelected(copy)
                 dismiss()
-            }
-
-            if (product.quantity == 0) {
-                view.btnAdd.isEnabled = false
             }
         }
     }
