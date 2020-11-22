@@ -30,7 +30,7 @@ class ClientLogDialogFragment private constructor(
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        binding?.html = client.generateHTMLReport(client.paymentDetails.extraHours)
+        binding?.html = client.generateHTMLReport()
         binding?.btnAccept?.setOnClickListener {
             dismiss()
         }

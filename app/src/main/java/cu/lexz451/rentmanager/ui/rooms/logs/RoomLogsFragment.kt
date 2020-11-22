@@ -1,5 +1,6 @@
 package cu.lexz451.rentmanager.ui.rooms.logs
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -19,6 +20,7 @@ import kotlinx.android.synthetic.main.client_list_item.view.*
 import kotlinx.android.synthetic.main.fragment_room_logs.*
 import kotlinx.android.synthetic.main.product_list_item.view.*
 import kotlinx.android.synthetic.main.product_list_item.view.name
+import java.time.format.DateTimeFormatter
 
 class RoomLogsFragment : Fragment() {
 
@@ -78,10 +80,25 @@ class RoomLogsFragment : Fragment() {
         private val view: View
     ) : RecyclerView.ViewHolder(view) {
 
+        @SuppressLint("SetTextI18n")
         fun bind(client: Client) {
-            view.name.text = client.name
-            view.ci.text = client.ci
+            view.name.text = "${client.name} - ${client.ci}"
+            view.date.text = client.checkOutDate?.format(DateTimeFormatter.ofPattern("d/MM/YY"))
             view.totalPay.text = client.paymentDetails.total.toString()
+            view.deleteBtn.setOnClickListener {
+                val dialog = MaterialAlertDialogBuilder(requireContext())
+                    .setTitle(R.string.warning)
+                    .setMessage(R.string.confirm_delete_log)
+                    .setPositiveButton(R.string.accept) { dialog, _ ->
+                        viewModel.deleteLog(client)
+                        dialog.dismiss()
+                    }
+                    .setNegativeButton(R.string.cancel) { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                dialog.create()
+                dialog.show()
+            }
             view.rootView.setOnClickListener {
                 showDialog(client)
             }

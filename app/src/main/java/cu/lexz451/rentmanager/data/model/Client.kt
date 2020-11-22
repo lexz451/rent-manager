@@ -35,7 +35,7 @@ data class Client(
 
     constructor() : this(0L, "", "", null, -1,
         mutableListOf<Product>(), LocalDateTime.now(), null,
-        PaymentDetails(.0, .0, .0, .0, .0, 0)
+        PaymentDetails(.0, .0, .0, .0, .0, 0, 0L)
     )
 
     override fun read(mapper: NitriteMapper?, document: Document?) {
@@ -57,14 +57,14 @@ data class Client(
         }
     }
 
-    fun generateHTMLReport(extraHours: Int): String {
+    fun generateHTMLReport(): String {
 
         val productsHtml = products.map {
             "<li>${it.name} / Cantidad: ${it.quantity} / Importe: ${it.quantity * it.price}</li>"
         }
 
-        val currentShift = ManagerApp.instance.database.shiftStore
-            .findById(ManagerApp.instance.settings.currentShift).first()
+        val shift = ManagerApp.instance.database.shiftStore
+            .findById(paymentDetails.shift).first()
 
         return "******************************<br>" +
                 "<strong>CLIENTE</strong><br>" +
@@ -74,13 +74,13 @@ data class Client(
                 "<span>C.I: ${companion?.ci}</span><br>" +
                 "<span>Nombre: ${companion?.name}</span><br><br>" +
                 "<strong>TURNO</strong><br>" +
-                "<span>${currentShift.employee}</span><br><br>" +
+                "<span>${shift.employee}</span><br><br>" +
                 "<strong>ENTRADA</strong><br>" +
                 "<span>${checkInDate.format(DateTimeFormatter.ofPattern("d/MM/YY - h:mm a"))}</span><br><br>" +
                 "<strong>SALIDA</strong><br>" +
                 "<span>${checkOutDate?.format(DateTimeFormatter.ofPattern("d/MM/YY - h:mm a"))}</span><br><br>" +
                 "<strong>HORAS EXTRA</strong><br>" +
-                "<span>${extraHours}</span><br><br>" +
+                "<span>${paymentDetails.extraHours}</span><br><br>" +
                 "<strong>CONSUMO</strong>" +
                 "<ul>${productsHtml.joinToString("")}</ul><br>" +
                 "<strong>A PAGAR</strong><br>" +

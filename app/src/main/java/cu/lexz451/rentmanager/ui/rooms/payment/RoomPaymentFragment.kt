@@ -27,6 +27,7 @@ import cu.lexz451.rentmanager.data.model.*
 import cu.lexz451.rentmanager.databinding.FragmentRoomPaymentBinding
 import cu.lexz451.rentmanager.ui.rooms.payment.blacklist.BlackListClientDialog
 import cu.lexz451.rentmanager.utils.AlarmScheduler
+import cu.lexz451.rentmanager.utils.findById
 import cu.lexz451.rentmanager.utils.getViewModelFactory
 import cu.lexz451.rentmanager.vm.RoomPaymentViewModel
 import kotlinx.android.synthetic.main.fragment_room_payment.*
@@ -174,8 +175,12 @@ class RoomPaymentFragment : Fragment(), AdapterView.OnItemSelectedListener {
             paidReturn = .0
         }
 
-        client.paymentDetails = PaymentDetails(forRoom, forProducts, total, paid, paidReturn, extra)
-        binding?.paymentReport = client.generateHTMLReport(extra)
+        val currentShift = ManagerApp.instance.database.shiftStore.findById(
+            ManagerApp.instance.settings.currentShift
+        ).first()
+
+        client.paymentDetails = PaymentDetails(forRoom, forProducts, total, paid, paidReturn, extra, currentShift.__id)
+        binding?.paymentReport = client.generateHTMLReport()
     }
 
     inner class SpinnerAdapter(context: Context,

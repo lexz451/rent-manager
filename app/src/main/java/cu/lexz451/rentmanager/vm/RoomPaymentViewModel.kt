@@ -40,7 +40,7 @@ class RoomPaymentViewModel(
             val product = db.productStore.findById(clientProduct.__id).firstOrNull()
             if (product != null) {
                 if (quantity > product.quantity) {
-                    val resProd = (product.quantity - quantity) * -1
+                    val resProd = quantity - product.quantity
                     product.quantity = 0
                     val roomP = room.products.find { clientProduct.__id == it.__id }
                     roomP?.let {

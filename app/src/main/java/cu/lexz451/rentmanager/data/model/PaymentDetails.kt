@@ -8,5 +8,6 @@ data class PaymentDetails (
     val total: Double,
     val paid: Double,
     val paidReturn: Double,
-    val extraHours: Int
+    val extraHours: Int,
+    var shift: Long
 ) : Serializable

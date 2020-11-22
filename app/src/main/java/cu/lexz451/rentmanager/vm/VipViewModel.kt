@@ -33,6 +33,9 @@ class VipViewModel(
         val record = _record.value
         record?.products?.remove(product)
         db.vipStore.update(record)
+        val storeProduct = db.productStore.findById(product.__id).first()
+        storeProduct.quantity += product.quantity
+        db.productStore.update(storeProduct)
     }
 
     fun add(product: Product) {
@@ -40,17 +43,16 @@ class VipViewModel(
         record?.products?.add(product)
         if (record != null) {
             db.vipStore.update(record)
-            return
+        } else {
+            val currentShift = ManagerApp.instance.settings.currentShift
+            val currentDate = LocalDate.now()
+            val shift = db.shiftStore.find(ObjectFilters.eq("__id", currentShift)).first()
+            val newRecord = VipRecord(0, currentDate, shift)
+            newRecord.products.add(product)
+            db.vipStore.insert(newRecord)
         }
-        val currentShift = ManagerApp.instance.settings.currentShift
-        val currentDate = LocalDate.now()
-        val shift = db.shiftStore.find(ObjectFilters.eq("__id", currentShift)).first()
-        val newRecord = VipRecord(0, currentDate, shift)
-        newRecord.products.add(product)
-        db.vipStore.insert(newRecord)
-
         val storeProduct = db.productStore.findById(product.__id).first()
-        storeProduct.quantity = storeProduct.quantity - product.quantity
+        storeProduct.quantity -= product.quantity
         db.productStore.update(storeProduct)
     }
 

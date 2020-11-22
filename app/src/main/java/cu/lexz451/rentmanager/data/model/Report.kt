@@ -59,12 +59,10 @@ data class Report(
 
         var totalShift = totalForRooms
 
-        clients.forEach { c ->
-            val products = c.products.groupBy { it.name }
-            products.forEach { (key, value) ->
-                productsHtml.add("<li>${key} / Cantidad: ${value.sumBy { it.quantity }} / Importe: ${value.sumByDouble { it.price * it.quantity }}</li>")
-                totalShift += value.sumByDouble { it.price * it.quantity }
-            }
+        val products = clients.map { c -> c.products }.flatten().groupBy { it.name }
+        products.forEach { (key: String, value: List<Product>) ->
+            productsHtml.add("<li>${key} / Cantidad: ${value.sumBy { it.quantity }} / Importe: ${value.sumByDouble { it.price * it.quantity }}</li>")
+            totalShift += value.sumByDouble { it.price * it.quantity }
         }
 
         val vipRecord = ManagerApp.instance.database.vipStore.find(

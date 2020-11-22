@@ -85,4 +85,5 @@
     <string name="confirm_remove_db">Esta seguro de eliminar todos los datos de la aplicación</string>
     <string name="confirm_delete_logs">Eliminar los elementos del historial?</string>
     <string name="confirm_delete_report">Borrar reporte?</string>
+    <string name="confirm_delete_log">Eliminar este elemento del Historial?</string>
 </resources>
